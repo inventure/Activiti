@@ -57,14 +57,22 @@
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
-        <configuration>
-          <path>/activiti-app</path>
-          <port>9999</port>
-          <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
-          <systemProperties>
-            <com.sun.management.jmxremote.port>4000</com.sun.management.jmxremote.port>
-          </systemProperties>
-        </configuration>
+        <version>2.0</version>
+        <executions>
+          <execution>
+            <id>tomcat-run</id>
+            <goals>
+              <goal>exec-war-only</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <path>/activiti-app</path>
+              <enableNaming>false</enableNaming>
+              <finalName>activiti-app.jar</finalName>
+              <charset>utf-8</charset>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <pluginManagement>
